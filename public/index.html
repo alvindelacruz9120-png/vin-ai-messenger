@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIN AI Messenger - Facebook AI Bot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(30, 30, 46, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10a37f, #0d7a5f);
+            border-radius: 20px;
+            font-size: 40px;
+            margin-bottom: 16px;
+            box-shadow: 0 10px 30px rgba(16, 163, 127, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #10a37f, #4fc3f7, #7c4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(16, 163, 127, 0.1);
+            border-radius: 16px;
+            margin: 20px 0;
+            border: 1px solid rgba(16, 163, 127, 0.2);
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #10a37f;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .status-text {
+            color: #10a37f;
+            font-weight: 600;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 30px 0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .feature-icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+        
+        .feature-label {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .info-card {
+            padding: 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .info-card .label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .info-card .value {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-top: 4px;
+            word-break: break-all;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: #555;
+            font-size: 0.85rem;
+        }
+        
+        .footer a {
+            color: #10a37f;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🤖</div>
+            <h1>VIN AI Messenger</h1>
+            <div class="subtitle">Facebook AI Bot with OpenRouter</div>
+        </div>
+        
+        <div class="status">
+            <div class="status-dot"></div>
+            <span class="status-text">Bot is Online</span>
+            <span style="color: #555;">|</span>
+            <span style="color: #888; font-size: 0.9rem;">Ready to respond</span>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <div class="feature-label">Smart Chat</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🖼️</div>
+                <div class="feature-label">Image Vision</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-label">AI Memory</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-label">Fast Replies</div>
+            </div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">Model</div>
+                <div class="value" id="modelName">Loading...</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Status</div>
+                <div class="value" style="color: #10a37f;">● Online</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Powered by <a href="https://openrouter.ai" target="_blank">OpenRouter AI</a> · 
+            <a href="/health" target="_blank">Health Check</a></p>
+            <p style="margin-top: 8px;">VIN AI Messenger v1.0 · Production Ready</p>
+        </div>
+    </div>
+    
+    <script>
+        // Fetch model info
+        async function getModelInfo() {
+            try {
+                const response = await fetch('/health');
+                const data = await response.json();
+                document.getElementById('modelName').textContent = data.model || process.env.OPENROUTER_MODEL || 'GPT-4o Mini';
+            } catch (error) {
+                document.getElementById('modelName').textContent = 'Connected';
+            }
+        }
+        
+        // Update model name on load
+        document.addEventListener('DOMContentLoaded', getModelInfo);
+    </script>
+</body>
+</html>
