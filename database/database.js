@@ -19,20 +19,21 @@ function initDatabase() {
   }
   
   try {
-    // Ensure database directory exists
-    const dbDir = path.dirname(path.join(__dirname, '..', 'data'));
+    // Use /data directory for Railway persistence
+    const dbDir = '/data';
+    const dbPath = path.join(dbDir, 'messenger.db');
+    
+    // Ensure directory exists
     if (!fs.existsSync(dbDir)) {
       fs.mkdirSync(dbDir, { recursive: true });
     }
-    
-    const dbPath = path.join(__dirname, '..', 'data', 'messenger.db');
     
     db = new sqlite3.Database(dbPath, (err) => {
       if (err) {
         console.error('❌ Error connecting to database:', err.message);
         throw err;
       }
-      console.log('✅ Connected to SQLite database');
+      console.log('✅ Connected to SQLite database at:', dbPath);
     });
     
     // Create tables
@@ -51,7 +52,6 @@ function initDatabase() {
 function createTables() {
   const db = getDatabase();
   
-  // Users table
   db.run(`
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,7 +70,6 @@ function createTables() {
     }
   });
   
-  // Messages table
   db.run(`
     CREATE TABLE IF NOT EXISTS messages (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
